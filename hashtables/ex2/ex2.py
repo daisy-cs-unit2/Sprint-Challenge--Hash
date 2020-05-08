@@ -10,10 +10,23 @@ def reconstruct_trip(tickets, length):
     YOUR CODE HERE
     """
 
-    # Make empty dictionary and empty variable to store final route values
+    # Make empty dictionary
+    flight_dict = {}
+    # Create route variable to store final values
+    route = []
+
     # loop through each ticket
-    # set key with ticket source and value with destination
+    for i in tickets:
+        # set key with ticket source and value with destination
+        flight_dict[i.source] = i.destination
+
     # initialize with destination of 'NONE'
-    # append destination to final route and reassign destination
+    current_destination = flight_dict["NONE"]
+
+    while current_destination is not "NONE":
+        # append current_destination to final route and reassign current_destination
+        route.append(current_destination)
+        current_destination = flight_dict[current_destination]
+    route.append("NONE")
 
     return route
